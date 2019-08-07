@@ -2,6 +2,8 @@
 ## Oh-My-Zsh Sorin for Fish!
 "Opinionated" (lazy) port of the Oh-My-Zsh "Sorin" theme for the Fish Shell. 
 
+![default prompt](https://raw.githubusercontent.com/LastContinue/snorin/assets/default.png)
+
 ## What? Why? Isn't there already a Sorin theme for Fish?
 Yes, in fact, there are two just in the main Fish repo alone (and probably an untold amount in the wild!) 
 
@@ -18,6 +20,8 @@ I'll add instructions for OMF later, I can't imagine they would be much differen
 
 ## Features
 Puts the Git repo info on the left, on the right it shows Git status
+![git repo info](https://raw.githubusercontent.com/LastContinue/snorin/assets/git_stuff1.png)
+![more git repo info](https://raw.githubusercontent.com/LastContinue/snorin/assets/git_stuff2.png)
 
 * new files ✭
 * modified files ✹
@@ -27,6 +31,8 @@ Puts the Git repo info on the left, on the right it shows Git status
 * unmerged (usually shows up during merge conflict) ═
 
 ### Variable support  
+![chevron example](https://raw.githubusercontent.com/LastContinue/snorin/assets/chevrons.png)
+
 `snorin_chevrons`  
 
 by default, this prompt will give you one green ❯ symbol (this is how the Oh-My-Zsh Sorin does it)  
