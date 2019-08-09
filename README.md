@@ -16,7 +16,10 @@ Fisher
 fisher add lastcontinue/snorin
 ```
 
-I'll add instructions for OMF later, I can't imagine they would be much different. 
+Oh-my-fish
+```
+omf install https://github.com/lastcontinue/snorin
+```
 
 ## Features
 Puts the Git repo info on the left, on the right it shows Git status
