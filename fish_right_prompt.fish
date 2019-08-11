@@ -26,13 +26,17 @@ function fish_right_prompt -d "Snorin - oh-my-zsh sorin inspired prompt - right 
 					# to the oh-my-zsh source
 					case "A"
 						print_symbol green ✚
-					case "D"
+					case "AD"
+                    case "D"
 						print_symbol red ✖
+                    case "RM"
 					case "M"
 						print_symbol blue ✹
 					case "R"
 						print_symbol magenta ➜
-					case "U"
+                    # I can't remember exaclty how to get one of these locally
+                    # to test it, probably wrong
+					case "*U*"
 						print_symbol yellow ═
 					case "??"
 						print_symbol cyan ✭
