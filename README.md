@@ -50,7 +50,33 @@ For example, I like the red, yellow, green, so I have mine set as
 
 `set -U snorin_chevrons red yellow green`
 
+### Random Fun
+I thought it might be fun to have the ability to have random colors generated for your prompts, so I wrote a little function that uses 
+either `jot` or `shuf` (make sure you have at least one of these installed<sup>*</sup>) to help make some random colors for your prompts. It works like 
+this  
+```
+snorin_random_chevrons N
+```
+(where N is the number of chevrons you want. You may need to run `source ~/.config/fish/functions/snorin.fish` first)
+
+#### For Instance
+If you want each new term session/tab to have a different prompt, then make sure that `snorin_chevrons` isn't set with the -U flag (easist way to do this is do `set -e snorin_chevrons` and that will unset it, and allow the random script to take over)
+
+Then in your `fish_config` you can do something like
+```
+source ~/.config/fish/functions/snorin.fish
+snorin_random_chevrons N
+```
+
+That should give each new session/tab a differnt set of colors (maybe. I only defined 10 colors so depending on N, YMMV).
+
+This is just a "for instance". There's hundreds of triggering events you could use to have a prompt
+change colors or number of `❯`. 
+
 **sources**:  
 https://github.com/robbyrussell/oh-my-zsh/blob/master/themes/sorin.zsh-theme  
 https://github.com/fish-shell/fish-shell/pull/2243  
 (I believe this eventually morphed into [this](https://github.com/fish-shell/fish-shell/blob/988283c7177d8496f18c1fea1a1007aa8d45d984/share/tools/web_config/sample_prompts/sorin.fish), however I found this shorter version better as inpiration)
+
+
+<sup>*</sup> Interestingly enough, `shuf` doesn't do duplicates, whereas `jot` does. I don't consider this an issue, but this might drive some people _crazy_ 
