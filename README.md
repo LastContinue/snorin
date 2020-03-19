@@ -64,10 +64,13 @@ If you want each new term session/tab to have a different prompt, then make sure
 
 Then in your `fish_config` you can do something like
 ```
-snorin_random_chevrons N
+if type snorin_random_chevrons > /dev/null 2>&1
+    snorin_random_chevrons 3 > /dev/null 2>&1
+end
 ```
+(`type X` will list the definition or location of a function/program if it exists. `> /dev/null 2>&1` shoves the output to oblivion, but `type` will still return with a status that `if` can check against. This confused me the first few times I saw it.)
 
-at the top of the file (or the bottom, or really anywhere that YOU remember where you put it). That should give each new session/tab a differnt set of colors (maybe. I only defined 10 colors so depending on 'N', so YMMV).
+That should give each new session/tab a different set of colors (maybe. I only defined 10 colors so duplicates will happen)
 
 This is just a "for instance". There's hundreds of triggering events you could use to have a prompt
 change colors or number of `❯`. Use your imagination!
