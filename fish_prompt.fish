@@ -1,9 +1,10 @@
-function fish_prompt -d "snorin - oh-my-zsh sorin inspired prompt"
+function fish_prompt -d -d "Snorin - oh-my-zsh sorin inspired prompt"
     # Main
 	printf (set_color cyan)(prompt_pwd)' '
 
     #Determine if git repo is set...
 	if git rev-parse ^ /dev/null
+        set -l current_branch '???' #fail with some humor
         git branch -qv | grep "\*" | grep -q detached
             and set -l current_branch (git rev-parse HEAD | cut -c1-7)
             or set -l current_branch (git symbolic-ref --short HEAD)
@@ -13,8 +14,8 @@ function fish_prompt -d "snorin - oh-my-zsh sorin inspired prompt"
 
     # print fun part of prompt
     if test -n "$snorin_chevrons"
-        for c in $snorin_chevrons
-            printf (set_color $c)'❯'
+        for chevron in $snorin_chevrons
+            printf (set_color $chevron)'❯'
         end
         printf ' '
     else
