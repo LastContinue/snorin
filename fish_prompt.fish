@@ -1,4 +1,4 @@
-function fish_prompt -d -d "Snorin - oh-my-zsh sorin inspired prompt"
+function fish_prompt -d "Snorin - oh-my-zsh sorin inspired prompt"
     # Main
 	printf (set_color cyan)(prompt_pwd)' '
 
