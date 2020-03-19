@@ -57,21 +57,20 @@ this
 ```
 snorin_random_chevrons N
 ```
-(where N is the number of chevrons you want. You may need to run `source ~/.config/fish/functions/snorin.fish` first)
+(where N is the number of chevrons you want)
 
 #### For Instance
 If you want each new term session/tab to have a different prompt, then make sure that `snorin_chevrons` isn't set with the -U flag (easist way to do this is do `set -e snorin_chevrons` and that will unset it, and allow the random script to take over)
 
 Then in your `fish_config` you can do something like
 ```
-source ~/.config/fish/functions/snorin.fish
 snorin_random_chevrons N
 ```
 
-That should give each new session/tab a differnt set of colors (maybe. I only defined 10 colors so depending on N, YMMV).
+at the top of the file (or the bottom, or really anywhere that YOU remember where you put it). That should give each new session/tab a differnt set of colors (maybe. I only defined 10 colors so depending on 'N', so YMMV).
 
 This is just a "for instance". There's hundreds of triggering events you could use to have a prompt
-change colors or number of `❯`. 
+change colors or number of `❯`. Use your imagination!
 
 **sources**:  
 https://github.com/robbyrussell/oh-my-zsh/blob/master/themes/sorin.zsh-theme  
