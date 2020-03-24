@@ -32,9 +32,7 @@ Puts the Git repo info on the left, on the right it shows Git status
 * staged files `✚`
 * file renamed (might not show up until you stage) `➜` 
 * unmerged (usually shows up during merge conflict) `═`
-* mystery condition (_something_ happened<sup>*</sup>) `◊`  
-
-(<sup>*</sup>Based on https://git-scm.com/docs/git-status there's are quite a few cases I didn't code for because I don't come across them very often. I figured `◊` looked innocent enough. If you come across this a lot, please help me out and file an issue with details or make a PR yourself 🙇‍♂️ )
+* mystery condition (_something_ happened<sup id="a1">[1](#f1)</sup>) `◊`  
 
 ### Variable support  
 ![chevron example](https://raw.githubusercontent.com/LastContinue/snorin/assets/chevrons.png)
@@ -55,7 +53,7 @@ For example, I like the red, yellow, green, so I have mine set as
 
 ### Random Fun
 I thought it might be fun to have the ability to have random colors generated for your prompts, so I wrote a little function that uses 
-either `jot` or `shuf` (make sure you have at least one of these installed<sup>**</sup>) to help make some random colors for your prompts. It works like 
+either `jot` or `shuf` (make sure you have at least one of these installed<sup id="a2">[2](#f2)</sup>) to help make some random colors for your prompts. It works like 
 this  
 ```
 snorin_random_chevrons N
@@ -83,5 +81,7 @@ https://github.com/robbyrussell/oh-my-zsh/blob/master/themes/sorin.zsh-theme
 https://github.com/fish-shell/fish-shell/pull/2243  
 (I believe this eventually morphed into [this](https://github.com/fish-shell/fish-shell/blob/988283c7177d8496f18c1fea1a1007aa8d45d984/share/tools/web_config/sample_prompts/sorin.fish), however I found this shorter version better as inpiration)
 
+**Footnotes**  
+<b id="f1">1</b> Based on https://git-scm.com/docs/git-status there's are quite a few cases I didn't code for because I don't come across them very often. I figured `◊` looked innocent enough. If you come across this a lot, please help me out and file an issue with details or make a PR yourself 🙇‍♂️ [↩](#a1)
 
-<sup>**</sup> Interestingly enough, `shuf` doesn't do duplicates, whereas `jot` does. I don't consider this an issue, but this might drive some people _crazy_ 
+<b id="f2">2</b> Interestingly enough, `shuf` doesn't do duplicates, whereas `jot` does. I don't consider this an issue, but this might drive some people _crazy_ [↩](#a2)
