@@ -13,15 +13,20 @@ function fish_right_prompt -d "Snorin - oh-my-zsh sorin inspired prompt - right 
 		for i in (git status --porcelain |
                     cut -c 1-2 |
                     string trim |
-                    string replace 'MM' 'M' | #same symbol - blue ✹
-                    string replace 'RM' 'M' |
-                    string replace 'AD' 'D' | #same symbol - green ✚
+                    string replace "AM" "A" |
+                    string replace "MM" "M" |
+                    sort |
                     uniq)
 			switch $i
-                # there's probably a gazillion cases I'm missing
+                # There's quite a few cases missing according to
+                # https://git-scm.com/docs/git-status
                 # but I tried to cover all of the ones I come across
                 # in "normal" usage, as well as trying to keep close
                 # to the oh-my-zsh source
+                # Always double-check your Git status before commiting
+                case "AD"
+                    #this can happen if you add a file, then delete it after staging the change
+                    #IMHO these two just cancel each other out
                 case "A"
                     print_symbol green ✚
                 case "D"
@@ -30,13 +35,16 @@ function fish_right_prompt -d "Snorin - oh-my-zsh sorin inspired prompt - right 
                     print_symbol blue ✹
                 case "R"
                     print_symbol magenta ➜
-                # I can't remember exactly how to trigger this locally
-                # to test it (they are merge conflicts), so probably wrong
-                case "*U*"
+                case "UU"
                     print_symbol yellow ═
                 # this is usually a new file... usually
-                case "??"
+                case "\?\?"
                     print_symbol cyan ✭
+                case "*"
+                    print_symbol yellow ◊
+                    #if you start getting this a lot,
+                    #please open an issue or file a PR
+                    #I wanted something generic that didn't really mean "good" or "bad"
             end
 		end
 	end

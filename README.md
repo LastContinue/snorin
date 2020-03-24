@@ -30,8 +30,9 @@ Puts the Git repo info on the left, on the right it shows Git status
 * modified files ✹
 * removed files ✖
 * staged files ✚
-* file renamed ➜
+* file renamed ➜ (might not show up until you stage)
 * unmerged (usually shows up during merge conflict) ═
+* mystery condition ◊ (there's many cases I didn't code for because I don't come across them very often. I wanted something "not scary" looking, but if you come across this a lot, please help me out and file an issue with details or make a PR yourself 🙇‍♂️) 
 
 ### Variable support  
 ![chevron example](https://raw.githubusercontent.com/LastContinue/snorin/assets/chevrons.png)
