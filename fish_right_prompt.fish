@@ -34,6 +34,7 @@ function fish_right_prompt -d "Snorin - oh-my-zsh sorin inspired prompt - right 
                 case "M"
                     print_symbol blue ✹
                 case "R"
+                case "RM"
                     print_symbol magenta ➜
                 case "UU"
                     print_symbol yellow ═
