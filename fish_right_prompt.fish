@@ -36,6 +36,7 @@ function fish_right_prompt -d "Snorin - oh-my-zsh sorin inspired prompt - right 
                 case "R"
                 case "RM"
                     print_symbol magenta ➜
+                case "DU"
                 case "UU"
                     print_symbol yellow ═
                 # this is usually a new file... usually
