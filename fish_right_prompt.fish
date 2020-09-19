@@ -2,7 +2,8 @@ function fish_right_prompt -d "Snorin - oh-my-zsh sorin inspired prompt - right 
 
 	# use this to DRY up some code
 	function print_symbol
-		printf (set_color $argv[1])$argv[2]' '
+        printf (set_color $argv[1])$argv[2]' '
+        set_color normal
 	end
 
     # last status
@@ -41,7 +42,7 @@ function fish_right_prompt -d "Snorin - oh-my-zsh sorin inspired prompt - right 
                     print_symbol yellow ═
                 # this is usually a new file... usually
                 case "\?\?"
-                    print_symbol cyan ✭
+                    print_symbol cyan ★
                 case "*"
                     print_symbol yellow ◊
                     #if you start getting this a lot,
