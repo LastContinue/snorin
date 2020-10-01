@@ -26,7 +26,7 @@ Puts the Git repo info on the left, on the right it shows Git status
 ![git repo info](https://raw.githubusercontent.com/LastContinue/snorin/assets/git_stuff1.png)
 ![more git repo info](https://raw.githubusercontent.com/LastContinue/snorin/assets/git_stuff2.png)
 
-* new files `✭`
+* new files `★` (the current star is _slightly_ different than the screenshot above. I will update screenshots when I get some time)
 * modified files `✹`
 * removed files `✖`
 * staged files `✚`
@@ -51,6 +51,13 @@ For example, I like the red, yellow, green, so I have mine set as
 
 `set -U snorin_chevrons red yellow green`
 
+---
+`snorin_show_git_prefix`
+
+I realized that after _months_ of daily use, the `git:` prefix before the branch was a bit redundant. If this theme could support multiple DVCS, then having a prefix for the type would make sense (`svn:`, `hg:`, `git:`, etc).  I decided to **disable the prefix by default** in order to cut down on visual clutter (Apologies that the screenshots don't reflect this for now - I plan to make new screenshots soon 🙇‍♂️)  
+`set -U snorin_show_git_prefix` will enable the `git:` prefix (it doesn't need a value, only to be set)  
+`set -e snorin_show_git_prefix` will disable the `git:` prefix **this is the default behavior**
+
 ### Random Fun
 I thought it might be fun to have the ability to have random colors generated for your prompts, so I wrote a little function that uses 
 either `jot` or `shuf` (make sure you have at least one of these installed<sup id="a2">[2](#f2)</sup>) to help make some random colors for your prompts. It works like 
@@ -61,15 +68,16 @@ snorin_random_chevrons N
 (where N is the number of chevrons you want)
 
 #### For Instance
-If you want each new term session/tab to have a different prompt, then make sure that `snorin_chevrons` isn't set with the -U flag (easist way to do this is do `set -e snorin_chevrons` and that will unset it, and allow the random script to take over)
-
-Then in your `fish_config` you can do something like
+If you want each new term session/tab to have a different prompt in your `fish_config` (mine's at `~/.config/fish/config.fish`, but ymmv) you could do something like  
 ```
-if type snorin_random_chevrons > /dev/null 2>&1
+#it's good to have a default in case something else breaks, but not strictly necessary
+set -U snorin_chevrons green
+
+if type -q snorin_random_chevrons
     snorin_random_chevrons 3 > /dev/null 2>&1
 end
-```
-(`type X` will list the definition or location of a function/program if it exists. `> /dev/null 2>&1` shoves the output to oblivion, but `type` will still return with a status that `if` can check against. This confused me the first few times I saw it.)
+```  
+(`type -q` will (q)uietly check if a function/program if it exists, returning a value rather than listing the output of `type`)
 
 That should give each new session/tab a different set of colors (maybe. I only defined 10 colors so duplicates will happen)
 
