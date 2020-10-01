@@ -55,6 +55,8 @@ For example, I like the red, yellow, green, so I have mine set as
 `snorin_show_git_prefix`
 
 I realized that after _months_ of daily use, the `git:` prefix before the branch was a bit redundant. If this theme could support multiple DVCS, then having a prefix for the type would make sense (`svn:`, `hg:`, `git:`, etc).  I decided to **disable the prefix by default** in order to cut down on visual clutter (Apologies that the screenshots don't reflect this for now - I plan to make new screenshots soon 🙇‍♂️)  
+
+
 `set -U snorin_show_git_prefix` will enable the `git:` prefix (it doesn't need a value, only to be set)  
 `set -e snorin_show_git_prefix` will disable the `git:` prefix **this is the default behavior**
 
