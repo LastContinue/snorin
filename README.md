@@ -67,16 +67,13 @@ this
 ```
 snorin_random_chevrons N
 ```
-(where N is the number of chevrons you want)
+(where N is the number of chevrons you want. It can also be passed without N to just do one chevron)
 
 #### For Instance
 If you want each new term session/tab to have a different prompt in your `fish_config` (mine's at `~/.config/fish/config.fish`, but ymmv) you could do something like  
 ```
-#it's good to have a default in case something else breaks, but not strictly necessary
-set -U snorin_chevrons green
-
 if type -q snorin_random_chevrons
-    snorin_random_chevrons 3 > /dev/null 2>&1
+    snorin_random_chevrons 3
 end
 ```  
 (`type -q` will (q)uietly check if a function/program if it exists, returning a value rather than listing the output of `type`)
