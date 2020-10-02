@@ -8,7 +8,7 @@ function snorin_random_chevrons -d "randomly sets snorin_chevrons colors for N n
     
     #If shuf is installed, use it. Doesn't do duplicates
     if type -q shuf
-        set shuffled_colors (shuf -i1-10 -n$color_count])
+        set shuffled_colors (shuf -i1-10 -n$color_count)
     #jot is installed by default on MacOS so 'easy win' here. Occasionally does duplicates
     else if type -q jot
         set shuffled_colors (jot -r $color_count 1 10)
