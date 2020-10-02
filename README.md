@@ -76,7 +76,7 @@ if type -q snorin_random_chevrons
     snorin_random_chevrons 3
 end
 ```  
-(`type -q` will (q)uietly check if a function/program if it exists, returning a value rather than listing the output of `type`)
+(`type -q` will (q)uietly check if a function/program, rather than listing the output of `type`)
 
 That should give each new session/tab a different set of colors (maybe. I only defined 10 colors so duplicates will happen)
 
