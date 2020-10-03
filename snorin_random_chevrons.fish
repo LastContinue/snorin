@@ -1,8 +1,8 @@
 #! /bin/env fish
 function snorin_random_chevrons -d "randomly sets snorin_chevrons colors for N number of chevrons."
-    set -l possible_colors red yellow green blue cyan magenta white brred brmagenta brwhite
-    set -l shuffled_colors
-    set -l color_count $argv[1]
+    set possible_colors red yellow green blue cyan magenta white brred brmagenta brwhite
+    set shuffled_colors
+    set color_count $argv[1]
     #default color_count to 1 if nothing was passed in
     test -n "$color_count"; or set -l color_count 1
     
@@ -16,7 +16,7 @@ function snorin_random_chevrons -d "randomly sets snorin_chevrons colors for N n
         echo "ERROR: either 'shuf' or 'jot' needs to be installed to use this function"
         return 1
     end
-    set -l color_list
+    set color_list
     for c in $shuffled_colors
         set color_list $color_list $possible_colors[$c]
     end
