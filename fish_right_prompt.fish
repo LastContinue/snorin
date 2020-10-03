@@ -1,4 +1,5 @@
 function fish_right_prompt -d "Snorin - oh-my-zsh sorin inspired prompt - right side"
+    set -l last_status $status
 
 	# use this to DRY up some code
 	function print_symbol
@@ -7,7 +8,10 @@ function fish_right_prompt -d "Snorin - oh-my-zsh sorin inspired prompt - right 
 	end
 
     # last status
-    test $status != 0; and printf (set_color red)"⏎ "
+    if not test $last_status -eq 0
+        printf (set_color red)"⏎ "
+        set_color normal
+    end
 
 	if git rev-parse ^ /dev/null
 		for i in (git status -s | cut -c 1-2 | string trim | sort | uniq)
@@ -18,24 +22,23 @@ function fish_right_prompt -d "Snorin - oh-my-zsh sorin inspired prompt - right 
                 # in "normal" usage, as well as trying to keep close
                 # to the oh-my-zsh source
                 # Always double-check your Git status before commiting
-                case "A*"
+                case A AM
                     print_symbol green ✚
-                case "D*"
+                case D AD MD RD
                     print_symbol red ✖
-                case "M*"
+                case M MM
                     print_symbol blue ✹
-                case "R*"
+                case R RM
                     print_symbol magenta ➜
-                case "*U*"
+                case "*U*" AA
                     print_symbol yellow ═
-                # this is usually a new file... usually
-                case "\?\?"
+                case \?\?
                     print_symbol cyan ★
                 case "*"
                     print_symbol yellow ◊
-                    #if you start getting this a lot,
-                    #please open an issue or file a PR
-                    #I wanted something generic that didn't really mean "good" or "bad"
+                    # if you start getting this a lot,
+                    # please open an issue or file a PR
+                    # I wanted something generic that didn't really mean "good" or "bad"
             end
 		end
 	end
