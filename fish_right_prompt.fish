@@ -10,14 +10,7 @@ function fish_right_prompt -d "Snorin - oh-my-zsh sorin inspired prompt - right 
     test $status != 0; and printf (set_color red)"⏎ "
 
 	if git rev-parse ^ /dev/null
-        #take advantage of Fish `String` commands
-		for i in (git status --porcelain |
-                    cut -c 1-2 |
-                    string trim |
-                    string replace "AM" "A" |
-                    string replace "MM" "M" |
-                    sort |
-                    uniq)
+		for i in (git status -s | cut -c 1-2 | string trim | sort | uniq)
 			switch $i
                 # There's quite a few cases missing according to
                 # https://git-scm.com/docs/git-status
@@ -25,20 +18,15 @@ function fish_right_prompt -d "Snorin - oh-my-zsh sorin inspired prompt - right 
                 # in "normal" usage, as well as trying to keep close
                 # to the oh-my-zsh source
                 # Always double-check your Git status before commiting
-                case "AD"
-                    #this can happen if you add a file, then delete it after staging the change
-                    #IMHO these two just cancel each other out
-                case "A"
+                case "A*"
                     print_symbol green ✚
-                case "D"
+                case "D*"
                     print_symbol red ✖
-                case "M"
+                case "M*"
                     print_symbol blue ✹
-                case "R"
-                case "RM"
+                case "R*"
                     print_symbol magenta ➜
-                case "DU"
-                case "UU"
+                case "*U*"
                     print_symbol yellow ═
                 # this is usually a new file... usually
                 case "\?\?"
