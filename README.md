@@ -32,12 +32,18 @@ Puts the Git repo info on the left, on the right it shows Git status
 * staged files `✚`
 * file renamed (might not show up until you stage) `➜` 
 * unmerged (usually shows up during merge conflict) `═`
-* mystery condition (_something_ happened<sup id="a1">[1](#f1)</sup>) `◊`  
 
 ### Variable support  
+This theme includes support for its own optional variables if you want to further customize your experience (without writing any code). 
+
+* `snorin_chevrons [color1 .. colorN]`
+* `snorin_show_git_prefix`
+* `snorin_show_error_code`
+
+#### Chevrons
+`snorin_chevrons`  
 ![chevron example](https://raw.githubusercontent.com/LastContinue/snorin/assets/chevrons.png)
 
-`snorin_chevrons`  
 
 by default, this prompt will give you one green ❯ symbol (this is how the Oh-My-Zsh Sorin does it)  
 However, the "Sorin" themes for Fish usually have three: a red ❯, a yellow ❯, and a green ❯ (something like `❯❯❯`) .  
@@ -49,20 +55,32 @@ You can have as many ❯ 's as you want with this theme by setting
 
 For example, I like the red, yellow, green, so I have mine set as  
 
-`set -U snorin_chevrons red yellow green`
+`set -U snorin_chevrons red yellow green` or  
+`set -gx snorin_chevrons red yellow green` if you're writing this to a config
 
----
+#### Git Prefix
 `snorin_show_git_prefix`
 
-I realized that after _months_ of daily use, the `git:` prefix before the branch was a bit redundant. If this theme could support multiple DVCS, then having a prefix for the type would make sense (`svn:`, `hg:`, `git:`, etc).  I decided to **disable the prefix by default** in order to cut down on visual clutter (Apologies that the screenshots don't reflect this for now - I plan to make new screenshots soon 🙇‍♂️)  
+I realized that after _months_ of daily use, the `git:` prefix before the branch was a bit redundant. If this theme could support multiple DVCS, then having a prefix for the type would make sense (`svn:`, `hg:`, `git:`, etc).  I decided to **disable the prefix by default** in order to cut down on visual clutter (Apologies that the screenshots don't reflect this for now - I plan to make new screenshots soon 🙇‍♂️). I am aware that Fish includes a very similar variable by default, and that you could also use `fish_vcs_prompt` if you wanted other vcs types, but this is _lazy_ port after all 😉
 
 
-`set -U snorin_show_git_prefix` will enable the `git:` prefix (it doesn't need a value, only to be set)  
+`set -U snorin_show_git_prefix` will enable the `git:` prefix (it doesn't need a value, only to be set. Use `set -gx snorin_show_git_prefix` if you're writing this to a config file)
 `set -e snorin_show_git_prefix` will disable the `git:` prefix **this is the default behavior**
+
+#### Error Codes
+`snorin_show_error_code`  
+
+By default, my inspiration Sorin theme uses a red `⏎` on the right side to indicate the last line returned non-zero. However, after playing around with some commands (`set -q` comes to mind), I realized _sometimes_ it might be better for it to actually print out the eror code instead.  
+
+This can now be enabled via  
+`set -U snorin_show_error_code` or
+`set -gx snorin_show_error_code` if you're writing to this to a config
+
+`set -e snorin_show_git_prefix` will disable it and you'll return to the `⏎` **this is the default behavior**
 
 ### Random Fun
 I thought it might be fun to have the ability to have random colors generated for your prompts, so I wrote a little function that uses 
-either `jot` or `shuf` (make sure you have at least one of these installed<sup id="a2">[2](#f2)</sup>) to help make some random colors for your prompts. It works like 
+either `jot` or `shuf` (make sure you have at least one of these installed<sup id="a1">[1](#f1)</sup>) to help make some random colors for your prompts. It works like 
 this  
 ```
 snorin_random_chevrons N
@@ -86,9 +104,7 @@ change colors or number of `❯`. Use your imagination!
 **sources**:  
 https://github.com/robbyrussell/oh-my-zsh/blob/master/themes/sorin.zsh-theme  
 https://github.com/fish-shell/fish-shell/pull/2243  
-(I believe this eventually morphed into [this](https://github.com/fish-shell/fish-shell/blob/988283c7177d8496f18c1fea1a1007aa8d45d984/share/tools/web_config/sample_prompts/sorin.fish), however I found this shorter version better as inpiration)
+(I believe this eventually morphed into [this](https://github.com/fish-shell/fish-shell/blob/master/share/tools/web_config/sample_prompts/sorin.fish), however I found this shorter version better as inpiration)
 
 **Footnotes**  
-<b id="f1">1</b> Based on https://git-scm.com/docs/git-status there's are quite a few cases I didn't code for because I don't come across them very often. I figured `◊` looked innocent enough. If you come across this a lot, please help me out and file an issue with details or make a PR yourself 🙇‍♂️ [↩](#a1)
-
-<b id="f2">2</b> Interestingly enough, `shuf` doesn't do duplicates, whereas `jot` does. I don't consider this an issue, but this might drive some people _crazy_ [↩](#a2)
+<b id="f1">1</b> Interestingly enough, `shuf` doesn't do duplicates, whereas `jot` does. I don't consider this an issue, but this might drive some people _crazy_ [↩](#a2)
