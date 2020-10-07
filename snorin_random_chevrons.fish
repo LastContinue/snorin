@@ -19,5 +19,5 @@ function snorin_random_chevrons -d "randomly sets snorin_chevrons colors for N n
     for c in $shuffled_colors
         set color_list $color_list $possible_colors[$c]
     end
-    set -gx snorin_chevrons $color_list
+    set -g snorin_chevrons $color_list
 end

@@ -25,7 +25,7 @@ function fish_prompt -d "Snorin - oh-my-zsh sorin inspired prompt"
     end
 
     # print fun part of prompt
-    test -n "$snorin_chevrons"; or set -gx snorin_chevrons green
+    test -n "$snorin_chevrons"; or set -g snorin_chevrons green
 
     for chevron_color in $snorin_chevrons
         print_color $chevron_color ❯
