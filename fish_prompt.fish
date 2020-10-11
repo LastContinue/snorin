@@ -1,27 +1,34 @@
 function fish_prompt -d "Snorin - oh-my-zsh sorin inspired prompt"
-    #Main
-	printf (set_color cyan)(prompt_pwd)' '
+	# use these to DRY up some code
+	function print_color_space
+        printf '%s ' (set_color $argv[1])$argv[2]
+        set_color normal
+	end
 
-    #determine if git repo is set...
-	if git rev-parse ^ /dev/null
-        set -l git_status (git branch --show-current)
-        test -n "$git_status"; or set -l git_status (git rev-parse --short HEAD)
+	function print_color
+        printf '%s' (set_color $argv[1])$argv[2]
+        set_color normal
+	end
 
-        #optionally show "git:" in front of branch/revision
-        set -q snorin_show_git_prefix
-        and set -l git_prefix (set_color blue)git(set_color brwhite):
-        or set -l git_prefix ''
+    # where are we ?
+	print_color_space cyan (prompt_pwd)
 
-        printf $git_prefix(set_color red)$git_status' '
+    # determine if git repo is set and try to set some information 
+	if set -l repo_info (command git symbolic-ref --short HEAD ^ /dev/null) # try set branch name
+    or set -l repo_info (command git rev-parse --short HEAD ^ /dev/null) # else try to set hash
+        # optionally show "git:" in front of branch/revision
+        # I believe there's a built-in Fish variable for this functionality.
+        # May move to that in the future if it works roughly the same
+        set -q snorin_show_git_prefix; and print_color blue "git"; and print_color brwhite ":"
+
+        print_color_space red $repo_info
     end
 
-    #print fun part of prompt
-    set -l chevron '❯'
-    test -n "$snorin_chevrons"; or set -U snorin_chevrons green
+    # print fun part of prompt
+    test -n "$snorin_chevrons"; or set -g snorin_chevrons green
 
     for chevron_color in $snorin_chevrons
-        printf (set_color $chevron_color)$chevron
+        print_color $chevron_color ❯
     end
-    printf ' '
-    set_color normal
+    printf " " 
 end
