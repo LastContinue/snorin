@@ -18,7 +18,7 @@ function fish_right_prompt -d "Snorin - oh-my-zsh sorin inspired prompt - right 
         end
     end
 
-	if command git rev-parse ^ /dev/null
+	if command git rev-parse 2> /dev/null
         # https://github.com/fish-shell/fish-shell/blob/master/share/tools/web_config/sample_prompts/sorin.fish#L110
         set -l git_status_code (command git status --porcelain | string sub -l2)
 

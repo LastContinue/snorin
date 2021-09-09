@@ -14,8 +14,8 @@ function fish_prompt -d "Snorin - oh-my-zsh sorin inspired prompt"
 	print_color_space cyan (prompt_pwd)
 
     # determine if git repo is set and try to set some information 
-	if set -l repo_info (command git symbolic-ref --short HEAD ^ /dev/null) # try set branch name
-    or set -l repo_info (command git rev-parse --short HEAD ^ /dev/null) # else try to set hash
+	if set -l repo_info (command git symbolic-ref --short HEAD 2> /dev/null) # try set branch name
+    or set -l repo_info (command git rev-parse --short HEAD 2> /dev/null) # else try to set hash
         # optionally show "git:" in front of branch/revision
         # I believe there's a built-in Fish variable for this functionality.
         # May move to that in the future if it works roughly the same
